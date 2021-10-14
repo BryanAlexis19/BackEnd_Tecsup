@@ -46,7 +46,7 @@ def setAlumno():
     email = request.json['email']
 
     cursor = mysql.connection.cursor()
-    cursor.execute("insert into alumnos(nombre,email) values('"+nombre + "','"+ email + "')")
+    cursor.execute("insert into alumnos(nombre,email) values('"+ nombre + "','"+ email + "')")
     mysql.connection.commit()
     cursor.close()
 
