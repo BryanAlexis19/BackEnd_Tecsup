@@ -5,6 +5,7 @@ from django.db.models.deletion import CASCADE
 
 # Create your models here.
 
+
 class clientes(models.Model):
     codCliente = models.IntegerField()
     nombreCliente = models.CharField(max_length=50)
@@ -13,15 +14,17 @@ class clientes(models.Model):
     correoCliente = models.CharField(max_length=60)
 
     def __str__(self):
-        return self.codCliente, self.nombreCliente, self.movilCliente, self.edadCliente, self.codCliente
+        return self.nombreCliente
+
 
 class servicios(models.Model):
     codServicio = models.IntegerField()
     nombreServicio = models.CharField(max_length=50)
     precioServicio = models.DecimalField(decimal_places=3, max_digits=10)
-    
+
     def __str__(self):
-        return self.codServicio, self.nombreServicio, self.precioServicio
+        return self.nombreServicio
+
 
 class boletas(models.Model):
     codBoleta = models.IntegerField()
@@ -30,9 +33,4 @@ class boletas(models.Model):
     fechaBoleta = models.DateField()
 
     def __str__(self):
-        return self.codBoleta, self.codCliente, self.codServicio, self.fechaBoleta
-
-
-
-
-
+        return str(self.codBoleta)
