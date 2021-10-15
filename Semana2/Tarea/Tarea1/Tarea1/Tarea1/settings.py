@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-#efnvka+t0e68f@j0^l$=-l+=#-8tjyqww$$do+$ih$m3k&u*f
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['2b47-190-233-166-217.ngrok.io']
 
 
 # Application definition
@@ -78,8 +78,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'bd_barberia_back',
-        'USER': 'root',
-        'PASSWORD' : '',
+        'USER': 'phpmyadmin',
+        'PASSWORD' : '123456',
         'HOST' : 'localhost',
         'Port' : '3306'
 
