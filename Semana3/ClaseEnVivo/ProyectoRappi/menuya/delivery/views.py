@@ -2,7 +2,7 @@ from django.shortcuts import render
 from .models import Categoria, Plato
 # Create your views here.
 
-def index(request):
+def menu(request):
     lstCategorias = Categoria.objects.all()
     lstPlatos = Plato.objects.all()
 
@@ -12,6 +12,15 @@ def index(request):
     }
 
     return render(request, 'menu.html', context)
+
+def menulist(request):
+    lstPlatos = Plato.objects.all()
+
+    context = {
+        'platos' : lstPlatos
+    }
+    
+    return render(request, 'menu-list.html', context)
 
 def plato(request, plato_id):
     objPlato = Plato.objects.get(pk = plato_id)
