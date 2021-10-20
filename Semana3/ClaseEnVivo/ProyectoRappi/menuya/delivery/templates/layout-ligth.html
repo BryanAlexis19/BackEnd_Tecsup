@@ -104,7 +104,7 @@
                         <li><a class="search" href="#"><i class="ri-search-line"></i></a>
                         </li>
                         <li class="phone-contact d-md-block d-none"><i class="ri-phone-fill float-start"></i>
-                            +997 509 153 849
+                            {{ request.session.negocio_telefono }}
                         </li>
                         <li class="menu-cart"><a href="cart.html">CART <span>1</span></a></li>
                         <li>49.50 $</li>
@@ -115,7 +115,7 @@
                         <li class="menu-cart"><a href="cart.html"><img src="{% static 'assets/img/home-2/icon/shopping-cart.png' %}" alt="icon"> <span>1</span></a></li>
                         <li>49.50 $</li>
                         <li class="phone-contact"><img class="me-2" src="{% static 'assets/img/home-2/icon/phone.png' %}" alt="icon">
-                            +997 509 153 849
+                            {{ request.session.negocio_telefono }}
                         </li>
                     </ul>
                 </div>
@@ -155,7 +155,7 @@
                                 <li class="single-info-item">
                                     <img src="{% static 'assets/img/icon/phone.png' %}" alt="icon">
                                     <div class="details">
-                                        +997 509 153 849
+                                        {{ request.session.negocio_telefono }}
                                     </div>
                                 </li>
                             </ul>
