@@ -50,3 +50,14 @@ def agregarCarrito(request,plato_id):
 def mostrarCarrito(request):
         return render(request, "carrito.html")
 
+def eliminarCarrito(request, plato_id):
+    objPlato = Plato.objects.get(pk = plato_id)
+    carrito = Cart(request)
+    carrito.remove(objPlato)
+    return render(request, 'carrito.html')
+
+def limpiarCarrito(request):
+    carrito = Cart(request)
+    carrito.clear()
+    return render(request, 'carrito.html')
+
