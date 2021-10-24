@@ -13,10 +13,10 @@ urlpatterns = [
     path('mostrarCarrito', views.mostrarCarrito, name='mostrarCarrito'),
     path('<int:plato_id>/', views.eliminarCarrito, name='eliminarCarrito'),
     path('', views.limpiarCarrito, name = 'limpiarCarrito'),
-    path('login', views.login, name='login'),
-    path('registroCliente', views.registroCliente, name='registroCliente'),
+    path('loginUsuario', views.loginUsuario, name='loginUsuario'),
+    path('registrarCliente', views.registrarCliente, name='registrarCliente'),
     path('registrarPedido', views.registrarPedido, name='registrarPedido'),
     path('gracias', views.gracias, name='gracias'),
-    path('confirmarPedido', views.confirmaPedido, name='confirmarPedido')
+    path('confirmarPedido', views.confirmarPedido, name='confirmarPedido')
     
 ]

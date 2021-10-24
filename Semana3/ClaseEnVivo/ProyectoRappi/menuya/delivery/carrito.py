@@ -30,12 +30,13 @@ class Cart:
         
     def save(self):
         self.session["cart"] = self.cart
-        for key,value in self.cart.items():
-            # self.totalCart = self.totalCart + (float(value["cantidad"])) * float(value["precio"])
-            self.totalCart = self.totalCart + (float(value["cantidad"])) * float(value["precio"])
-        self.session["totalcart"] = self.totalCart
+        total = 0
+
+        for key,value in self.cart.items():           
+            total = total + (float(value["cantidad"])) * float(value["precio"])
+        self.session["totalCart"] = total
         self.session.modified = True
-        print(self.totalCart)
+
         
     def remove(self,plato):
         plato_id = str(plato.id)

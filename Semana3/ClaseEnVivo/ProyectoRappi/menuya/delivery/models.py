@@ -55,8 +55,8 @@ class Cliente(models.Model):
     usuario = models.OneToOneField(User,on_delete=models.RESTRICT)
     telefono = models.CharField(max_length=20)
 
-    def str(self):
-        return self.telefono
+    def __str__(self):
+        return f"{self.usuario.first_name} {self.usuario.last_name}"
 
 class Pedido(models.Model):
     cliente = models.ForeignKey(Cliente,on_delete=models.RESTRICT)
@@ -66,7 +66,7 @@ class Pedido(models.Model):
     totalPagar = models.DecimalField(max_digits=9,decimal_places=2)
     montoPago = models.DecimalField(max_digits=20,decimal_places=2)
 
-    def str(self):
+    def __str__(self):
         return self.fechaHora
 
 class PedidoDetalle(models.Model):
@@ -75,5 +75,5 @@ class PedidoDetalle(models.Model):
     precio = models.DecimalField(max_digits=9,decimal_places=2)
     cantidad = models.IntegerField(default=1)
 
-    def str(self):
+    def __str__(self):
         return self.plato.nombre

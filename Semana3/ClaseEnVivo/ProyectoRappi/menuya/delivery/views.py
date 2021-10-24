@@ -63,29 +63,39 @@ def limpiarCarrito(request):
     carrito.clear()
     return render(request, 'carrito.html')
 
-def login(request):
+
+
+def loginUsuario(request):
+    context = {}
     if request.method == 'POST':
-        usuario = request.POST['usuario']
-        clave = request.POST['clave']
+        dataUsuario = request.POST['usuario']
+        dataClave = request.POST['clave']
 
-        loginUsuario = authenticate(request,username=usuario, password=clave)
+        print(dataUsuario)
 
-        if loginUsuario is not None:
-            login(request,loginUsuario)
-            return redirect('/delivery/registrarPedido')
+        loginUser= authenticate(request,username=dataUsuario, password=dataClave)
+        if loginUser is not None:
+            login(request,loginUser)
+            return redirect('/registrarPedido')
+        else:
+            context = {
+                'error' : 'datos Incorrectos'
+            }
 
-    return render(request, 'login.html')
+    return render(request, 'loginUsuario.html', context)
 
 
 
-def registroCliente(request):
+def registrarCliente(request):
     if request.method == 'POST':
         #Registrar un nuevo cliente
 
-        usuario = request.post['usuario']
-        clave = request.post['password']
-        nuevoUsuario = User.objects.create_user(username = usuario, password = clave)
-        nuevoUsuario.first_name = request.POST['nombres']
+        dataUsuario = request.POST['usuario']
+        dataClave = request.POST['clave']
+
+        nuevoUsuario = User.objects.create_user(username = dataUsuario, password = dataClave)
+
+        nuevoUsuario.first_name = request.POST['nombre']
         nuevoUsuario.last_name = request.POST['apellido']
         nuevoUsuario.email = request.POST['email']
 
@@ -96,9 +106,9 @@ def registroCliente(request):
         nuevoCliente.save()
 
         
-        return redirect('/delivery/login')
+        return redirect('/loginUsuario')
     
-    return render(request, "registroCliente.html")
+    return render(request, "registrarCliente.html")
 
 def registrarPedido(request):
     usuarioPedido = User.get(pk=request.user.id)
@@ -120,7 +130,7 @@ def registrarPedido(request):
     else:
         return redirect('/delivery/login')
 
-    return render(request, 'pedido.html', context)
+    return render(request, 'registrarPedido.html', context)
 
 def gracias(request):
     return render(request,'gracias.html')
