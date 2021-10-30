@@ -1,0 +1,17 @@
+{
+  "name": "puntoventa",
+  "version": "1.0.0",
+  "description": "sistema de punto de venta",
+  "main": "index.js",
+  "scripts": {
+    "dev": "set DEBUG=app:*&& nodemon index"
+  },
+  "author": "bdiaz",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.14"
+  }
+}
