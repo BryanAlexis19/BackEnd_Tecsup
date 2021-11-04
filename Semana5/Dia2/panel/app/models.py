@@ -1,7 +1,8 @@
 from django.db import models
+from cloudinary.models import CloudinaryField
 
 class Cargo(models.Model):
-    cargo_id = models.IntegerField(primary_key=True)
+    cargo_id = models.AutoField(primary_key=True)
     cargo_nom = models.CharField(max_length=200)
 
     class Meta:
@@ -13,7 +14,7 @@ class Cargo(models.Model):
 
 
 class Categoria(models.Model):
-    categoria_id = models.IntegerField(primary_key=True)
+    categoria_id = models.AutoField(primary_key=True)
     categoria_nom = models.CharField(max_length=45)
 
     class Meta:
@@ -25,7 +26,7 @@ class Categoria(models.Model):
 
 
 class Empleado(models.Model):
-    empleado_id = models.IntegerField(primary_key=True)
+    empleado_id = models.AutoField(primary_key=True)
     empleado_nom = models.CharField(max_length=200)
     cargo = models.ForeignKey(Cargo, models.DO_NOTHING)
 
@@ -34,11 +35,11 @@ class Empleado(models.Model):
         db_table = 'tbl_empleado'
 
     def __str__(self):
-        return self.empleado.nom
+        return self.empleado_nom
 
 
 class Mesa(models.Model):
-    mesa_id = models.IntegerField(primary_key=True)
+    mesa_id = models.AutoField(primary_key=True)
     mesa_nro = models.CharField(max_length=3)
     mesa_cap = models.CharField(max_length=45, blank=True, null=True)
 
@@ -46,12 +47,12 @@ class Mesa(models.Model):
         managed = False
         db_table = 'tbl_mesa'
     
-    def __str_self(self):
+    def __str__(self):
         return self.mesa_nro
 
 
 class Pedido(models.Model):
-    pedido_id = models.IntegerField(primary_key=True)
+    pedido_id = models.AutoField(primary_key=True)
     pedido_fetch = models.DateTimeField(blank=True, null=True)
     pedido_nro = models.CharField(max_length=200, blank=True, null=True)
     pedido_est = models.CharField(max_length=100, blank=True, null=True)
@@ -67,9 +68,10 @@ class Pedido(models.Model):
 
 
 class Plato(models.Model):
-    plato_id = models.IntegerField(primary_key=True)
+    plato_id = models.AutoField(primary_key=True)
     plato_nom = models.CharField(max_length=200)
-    plato_img = models.CharField(max_length=200)
+    #plato_img = models.CharField(max_length=200)
+    plato_img = CloudinaryField('image',default='')
     plato_pre = models.FloatField()
     categoria = models.ForeignKey(Categoria, models.DO_NOTHING)
 
@@ -82,7 +84,7 @@ class Plato(models.Model):
 
 
 class PlatoPedido(models.Model):
-    pedido_plato_id = models.IntegerField(primary_key=True)
+    pedido_plato_id = models.AutoField(primary_key=True)
     pedido_plato_cant = models.IntegerField(blank=True, null=True)
     pedido_plato_pre = models.FloatField(blank=True, null=True)
     pedido = models.ForeignKey(Pedido, models.DO_NOTHING)
