@@ -10,7 +10,7 @@ const jwt = require('jsonwebtoken');
 const validarToken = (req, res, next) => {
   //Coger valor de la cabezera y guardarlo en una variable
   const bearerHeader = req.headers["authorization"];
-
+  console.log("bearerHeader", bearerHeader);
   //Si no existe la cabezera
   if (typeof bearerHeader !== "undefined") {
     //Separar el token del bearer
@@ -18,6 +18,7 @@ const validarToken = (req, res, next) => {
     //Coger el token
     const bearerToken = bearer[1];
     //Verificar el token
+    console.log(bearerToken);
     req.token = bearerToken;
     next();
   } else {
@@ -74,7 +75,11 @@ router.get("/auth/empleado", validarToken, (req, res) => {
           [usuario_id],
           (err, rows, fields) => {
             if (!err) {
-              res.json(rows[0]);
+              //res.json(rows[0]);
+               res.json({
+                 ok: true,
+                 content: rows[0],
+              });
             } else {
               console.log(err);
             }

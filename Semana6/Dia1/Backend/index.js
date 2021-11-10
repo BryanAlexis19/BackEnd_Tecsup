@@ -13,6 +13,7 @@ app.use(require('./routes/categoria'));
 app.use(require('./routes/empleado'));
 app.use(require('./routes/mesa'));
 app.use(require('./routes/pedido'));
+app.use(require('./routes/plato'));
 
 
 app.listen(config.port,function() {
