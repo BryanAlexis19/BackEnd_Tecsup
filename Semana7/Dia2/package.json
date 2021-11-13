@@ -1,0 +1,19 @@
+{
+  "name": "dia2",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  },
+  "scripts": {
+    "dev": "nodemon index"
+  },
+  "author": "",
+  "description": "",
+  "dependencies": {
+    "sequelize": "^6.9.0",
+    "sqlite": "^4.0.23",
+    "sqlite3": "^5.0.2"
+  }
+}
